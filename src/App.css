@@ -1,0 +1,20 @@
+/* App.css */
+
+body {
+    margin-left: 60px;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column; /* Header on top, content below */
+    height: 100vh; /* Full viewport height */
+}
+
+.app-container {
+    display: flex; /* Sidebar and content side by side */
+    flex: 1;
+}
+
+.main-content {
+    flex: 1; /* Takes remaining space */
+    /*padding: 20px;*/
+    overflow: auto; /* Allows scrolling */
+}

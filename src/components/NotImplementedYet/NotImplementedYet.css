@@ -1,0 +1,25 @@
+/* src/components/NotImplementedYet/NotImplementedYet.css */
+
+.not-implemented-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Full viewport height */
+    background-color: #f8f9fa; /* Light background color */
+    text-align: center;
+    padding: 20px;
+}
+
+.not-implemented-title {
+    font-size: 2.5em;
+    color: #333; /* Dark text color for contrast */
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.not-implemented-description {
+    font-size: 1.2em;
+    color: #666; /* Medium text color for description */
+    max-width: 600px; /* Max width for text block */
+}

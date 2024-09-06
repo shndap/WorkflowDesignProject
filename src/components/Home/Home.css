@@ -1,0 +1,25 @@
+/* src/components/Home/Home.css */
+
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Full viewport height */
+    background: linear-gradient(to right, #f8f9fa, #e9ecef); /* Light gradient background */
+    text-align: center;
+    padding: 20px;
+}
+
+.home-title {
+    font-size: 2.5em;
+    color: #333; /* Dark text color for contrast */
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.home-description {
+    font-size: 1.2em;
+    color: #666; /* Medium text color for description */
+    max-width: 600px; /* Max width for text block */
+}
