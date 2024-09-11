@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, {useState} from 'react';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Sidebar from './components/Sidebar/Sidebar';
 import Header from './components/Header/Header';
 import Dashboard from './components/Dashboard/Dashboard';
 import Home from './components/Home/Home';
 import NotImplementedYet from './components/NotImplementedYet/NotImplementedYet';
+import TaskMenu from "./components/TaskMenu/TaskMenu";
 import './App.css';
 
 function App() {
@@ -15,13 +16,14 @@ function App() {
     return (
         <Router>
             <div className="app-container">
-                <Sidebar collapsed={collapsed} toggleSidebar={toggleSidebar} />
+                <Sidebar collapsed={collapsed} toggleSidebar={toggleSidebar}/>
                 <div className="main-content">
-                    <Header collapsed={collapsed} />
+                    <Header collapsed={collapsed}/>
                     <Routes>
-                        <Route path="/dashboard" element={<Dashboard />} />
-                        <Route path="/" element={<Home />} /> {/* Default route */}
-                        <Route path="/not-implemented-yet" element={<NotImplementedYet />} /> {/* Default route */}
+                        <Route path="/dashboard" element={<Dashboard/>}/>
+                        <Route path="/" element={<Home/>}/> {/* Default route */}
+                        <Route path="/not-implemented-yet" element={<NotImplementedYet/>}/> {/* Default route */}
+                        <Route path="/task-details" element={<TaskMenu/>}/>
                         {/* Add other routes here */}
                     </Routes>
                 </div>

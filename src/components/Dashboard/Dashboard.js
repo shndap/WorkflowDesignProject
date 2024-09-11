@@ -1,11 +1,31 @@
 import React, {useState} from 'react';
 import './Dashboard.css'; // Import the CSS file for styling
+import { useNavigate } from 'react-router-dom';
 import {DragDropContext, Droppable, Draggable} from "react-beautiful-dnd";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faPlus, faPen} from '@fortawesome/free-solid-svg-icons';
 
 const Dashboard = () => {
-    const [columns, setColumns] = useState([]);
+    const initColumns = [
+        {
+            id: 'column-1',
+            name: 'Backlog',
+            tasks: [
+                { id: 'task-1', name: 'Design UI Mockups' },
+                { id: 'task-2', name: 'Setup Database Schema' }
+            ]
+        },
+        {
+            id: 'column-2',
+            name: 'In Progress',
+            tasks: [
+                { id: 'task-3', name: 'Implement Authentication' }
+            ]
+        }
+    ];
+
+
+    const [columns, setColumns] = useState(initColumns);
     const [taskOverlayVisible, setTaskOverlayVisible] = useState(false);
     const [columnOverlayVisible, setColumnOverlayVisible] = useState(false);
     const [newTaskName, setNewTaskName] = useState('');
@@ -13,6 +33,8 @@ const Dashboard = () => {
     const [editingItem, setEditingItem] = useState(null);
     const [editingType, setEditingType] = useState('');
     const [addingTaskToColumn, setAddingTaskToColumn] = useState(null);
+
+    const navigate = useNavigate();
 
     const addColumn = () => {
         if (newColumnName) {
@@ -61,9 +83,14 @@ const Dashboard = () => {
         }
     };
 
+    const handleTaskClick = (task) => {
+        // Navigate to task details page with the task identifier (or other data)
+        navigate('/task-details');
+    };
+
     const onDragEnd = (result) => {
-        console.log(result);
         const {source, destination} = result;
+        console.log(source, destination);
         if (!destination) return;
 
         const sourceColumnIndex = columns.findIndex(column => column.id === source.droppableId);
@@ -87,6 +114,7 @@ const Dashboard = () => {
 
     return (
         <DragDropContext onDragEnd={onDragEnd}>
+            <div className="header-dashboard">Dashboard</div>
             <Droppable droppableId="all-columns" direction="horizontal">
                 {(provided) => (
                     <div className="dashboard-body" ref={provided.innerRef} {...provided.droppableProps}>
@@ -110,23 +138,21 @@ const Dashboard = () => {
                                                     <Draggable key={task.id} draggableId={task.id} index={taskIndex}>
                                                         {(provided) => (
                                                             <div
-                                                                className="task"
+                                                                className="fancy"
                                                                 ref={provided.innerRef} // Correctly pass ref
                                                                 {...provided.draggableProps} // Correctly pass draggable props
                                                                 {...provided.dragHandleProps} // Correctly pass drag handle props
+                                                                // onClick={() => handleEdit(colIndex, taskIndex)}
+                                                                onClick={() => handleTaskClick(taskIndex)}
                                                             >
-                                                                {task.content}
-                                                                <button className="edit-button"
-                                                                        onClick={() => handleEdit(colIndex, taskIndex)}>
-                                                                    <FontAwesomeIcon icon={faPen} color="black"
-                                                                                     size="2xs"/>
-                                                                </button>
+                                                                {task.name}
                                                             </div>
                                                         )}
                                                     </Draggable>
-                                                    {provided.placeholder}
                                                 </div>
                                             ))}
+                                            {provided.placeholder}
+
                                             <button
                                                 className="add-task-button"
                                                 onClick={() => {
@@ -134,9 +160,9 @@ const Dashboard = () => {
                                                     setTaskOverlayVisible(true);
                                                 }}
                                             >
-                                                {provided.placeholder}
                                                 <FontAwesomeIcon icon={faPlus}/>
                                             </button>
+                                            {provided.placeholder}
                                         </div>
                                     </div>
                                 )}
@@ -150,8 +176,8 @@ const Dashboard = () => {
             </Droppable>
 
             {columnOverlayVisible && (
-                <div className="overlay">
-                    <div className="overlay-content">
+                <div className="login-box">
+                    <div className="user-box">
                         <h2>Add Column</h2>
                         <input
                             type="text"
@@ -159,15 +185,17 @@ const Dashboard = () => {
                             onChange={(e) => setNewColumnName(e.target.value)}
                             placeholder="Column Name"
                         />
-                        <button onClick={addColumn}>Add Column</button>
-                        <button onClick={() => setColumnOverlayVisible(false)}>Close</button>
+                        <div>
+                            <button onClick={addColumn}>Add Column</button>
+                            <button onClick={() => setColumnOverlayVisible(false)}>Close</button>
+                        </div>
                     </div>
                 </div>
             )}
 
             {taskOverlayVisible && (
-                <div className="overlay">
-                    <div className="overlay-content">
+                <div className="login-box">
+                    <div className="user-box">
                         <h2>Add Task</h2>
                         <input
                             type="text"
@@ -175,15 +203,17 @@ const Dashboard = () => {
                             onChange={(e) => setNewTaskName(e.target.value)}
                             placeholder="Task Name"
                         />
-                        <button onClick={addTask}>Add Task</button>
-                        <button onClick={() => setTaskOverlayVisible(false)}>Close</button>
+                        <div>
+                            <button onClick={addTask}>Add Task</button>
+                            <button onClick={() => setTaskOverlayVisible(false)}>Close</button>
+                        </div>
                     </div>
                 </div>
             )}
 
             {editingItem && (
-                <div className="overlay">
-                    <div className="overlay-content">
+                <div className="login-box">
+                    <div className="user-box">
                         <h2>Edit {editingType === 'task' ? 'Task' : 'Column'}</h2>
                         <input
                             type="text"
@@ -191,8 +221,10 @@ const Dashboard = () => {
                             onChange={(e) => (editingType === 'task' ? setNewTaskName(e.target.value) : setNewColumnName(e.target.value))}
                             placeholder={editingType === 'task' ? 'Task Name' : 'Column Name'}
                         />
-                        <button onClick={saveEdit}>Save</button>
-                        <button onClick={() => setEditingItem(null)}>Cancel</button>
+                        <div>
+                            <button onClick={saveEdit}>Save</button>
+                            <button onClick={() => setEditingItem(null)}>Cancel</button>
+                        </div>
                     </div>
                 </div>
             )}

@@ -22,28 +22,36 @@
     font-size: 1.5em;
 }
 
-.dashboard-body {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
 .column {
-    background-color: #c4d0d8; /* Dark blue background for columns */
+    background-color: white; /* Dark blue background for columns */
     color: black;
     border-radius: 5px;
     padding: 20px;
     width: 300px; /* Max width for columns */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for columns */
+    transition: all 0.5s;
+}
+
+.column:hover {
+    background-color: #c4d0d8;
+    /*backdrop-filter: blur(6px);*/
+}
+
+.dashboard-body {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 20px;
+    width: auto;
 }
 
 .header-dashboard{
     display: flex;
     font-size: 2.5em;
-    padding: 10px;
+    padding: 20px;
     align-self: center;
-    width: 100%;
+    width: auto;
     font-weight: bold;
 }
 
@@ -69,6 +77,7 @@
 
 .column-title {
     font-size: 1.2em;
+    transition: all 0.5s ease;
 }
 
 .edit-button {
@@ -160,4 +169,164 @@
 
 .overlay-content button:hover {
     background-color: #2c3e50; /* Slightly darker blue on hover */
+}
+
+/* From Uiverse.io by cssbuttons-io */
+.fancy {
+    background-color: transparent;
+    border: 2px solid #000;
+    border-radius: 5px;
+    box-sizing: border-box;
+    color: black;
+    cursor: pointer;
+    display: inline-block;
+    float: right;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    outline: none;
+    overflow: visible;
+    padding: 1.25em 2em 1.25em 4em;
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+    text-transform: none;
+    transition: all 0.3s ease-in-out;
+    user-select: none;
+    font-size: 13px;
+    width: 100%;
+    margin: 0 0 10px;
+}
+
+.fancy::before {
+    content: " ";
+    width: 1.5625rem;
+    height: 2px;
+    background: black;
+    top: 50%;
+    left: 1.5em;
+    position: absolute;
+    transform: translateY(-50%);
+    transform-origin: center;
+    transition: background 0.3s linear, width 0.3s linear;
+}
+
+.fancy .text {
+    font-size: 1.125em;
+    line-height: 1.33333em;
+    padding-left: 2em;
+    display: block;
+    text-align: left;
+    transition: all 0.3s ease-in-out;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: black;
+}
+
+.fancy:hover {
+    color: white;
+    background: rgb(22, 43, 54);
+}
+
+.fancy:hover::before {
+    width: 0.9375rem;
+    background: white;
+}
+
+.fancy:hover .text {
+    color: white;
+    padding-left: 1.5em;
+}
+
+/* From Uiverse.io by guilhermeyohan */
+@keyframes slideInFromLeft {
+    0% {
+        transform: translate(-100%, -50%);
+    }
+    100% {
+        transform: translate(-50%, -50%);
+    }
+}
+
+.login-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    padding: 40px;
+    transform: translate(-50%, -50%);
+    background: rgb(22, 43, 54);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    border-radius: 10px;
+    animation: slideInFromLeft 0.5s;
+}
+
+.user-box h2 {
+    color: white;
+    width: 100%;
+    text-align: center;
+}
+
+.user-box div {
+    width: fit-content;
+    height: auto;
+    justify-content: center;
+    margin: auto;
+}
+
+
+.login-box .user-box {
+    position: relative;
+}
+
+.login-box .user-box input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+}
+
+.login-box .user-box label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.login-box .user-box input:focus ~ label,
+.login-box .user-box input:valid ~ label {
+    top: -20px;
+    left: 0;
+    color: #bdb8b8;
+    font-size: 12px;
+}
+
+.login-box button {
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: .5s;
+    letter-spacing: 4px;
+    border-radius: 5px;
+    margin: 5px
+}
+
+.login-box button:hover {
+    background: #8abff4;
+    color: #fff;
+    border-radius: 5px;
 }
