@@ -28,6 +28,7 @@
     border-radius: 5px;
     padding: 20px;
     width: 300px; /* Max width for columns */
+    min-width: 300px; /* Max width for columns */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for columns */
     transition: all 0.5s;
 }
@@ -41,9 +42,28 @@
     display: flex;
     flex-direction: row;
     gap: 20px;
-    flex-wrap: wrap;
+    overflow-x: scroll;
     padding: 20px;
     width: auto;
+}
+
+.dashboard-body::-webkit-scrollbar {
+    width: 6px; /* Width of the scrollbar */
+    height: 6px;
+}
+
+.dashboard-body::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Background color of the scrollbar track */
+    margin: 20px;
+}
+
+.dashboard-body::-webkit-scrollbar-thumb {
+    background: #b2cde3; /* Color of the scrollbar thumb */
+    border-radius: 6px; /* Rounded corners of the scrollbar thumb */
+}
+
+.dashboard-body::-webkit-scrollbar-thumb:hover {
+    background: #5c6483; /* Darker color when hovered */
 }
 
 .header-dashboard{
@@ -63,7 +83,8 @@
     padding: 2px;
     align-items: center;
     width: 30px; /* Max width for columns */
-    height: 400px;
+    min-width: 30px; /* Max width for columns */
+    /*height: 400px;*/
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for columns */
 }
@@ -185,6 +206,7 @@
     letter-spacing: 0.05em;
     outline: none;
     overflow: visible;
+    overflow-wrap: anywhere;
     padding: 1.25em 2em 1.25em 4em;
     position: relative;
     text-align: left;
@@ -291,6 +313,66 @@
     background: transparent;
 }
 
+.login-box .user-box select {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 30px;
+    border: none;
+    max-height: 150px;
+    /*border-bottom: 1px solid #fff;*/
+    outline: none;
+    background: transparent;
+}
+
+.login-box .user-box option {
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    padding: 10px;
+    color: white;
+    position: relative;
+    /*top: -100px;*/
+    transition: 300ms;
+}
+
+/* WebKit scrollbar styling */
+.login-box .user-box select::-webkit-scrollbar {
+    width: 10px;
+}
+
+.login-box .user-box select::-webkit-scrollbar-track {
+    background: #2c3e50;
+    border-radius: 5px;
+}
+
+.login-box .user-box select::-webkit-scrollbar-thumb {
+    background: #34495e;
+    border-radius: 5px;
+}
+
+.login-box .user-box select::-webkit-scrollbar-thumb:hover {
+    background: #1abc9c;
+}
+
+.select-label {
+    color: white;
+    font-size: 1.2em;
+    border-radius: 5px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.48);
+    min-width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+/* Hover effect for options */
+.login-box .user-box option:hover {
+    background: #34495e;
+    color: #fff;
+}
+
 .login-box .user-box label {
     position: absolute;
     top: 0;
@@ -329,4 +411,26 @@
     background: #8abff4;
     color: #fff;
     border-radius: 5px;
+}
+
+
+.labels {
+    transform: scale(0);
+    height: 0;
+    margin: auto;
+    width: auto;
+    transition: all 0.3s ease-in-out;
+}
+
+.fancy:hover .labels {
+    transform: scale(1);
+    flex-direction: row;
+    overflow-x: scroll;
+    padding: 10px 0px 0px 0px;
+    height: max-content;
+    display: flex;
+}
+
+.fancy:hover .labels::-webkit-scrollbar {
+    display: none;
 }

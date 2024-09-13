@@ -32,7 +32,7 @@ function Sidebar() {
                             <FontAwesomeIcon icon={faTachometerAlt}/>
                         </span>
                     ) : (
-                        <Link to="/dashboard" className="menu-link">
+                        <Link to="/dashboard" className="menu-link" onClick={handleCollapseToggle}>
                             <FontAwesomeIcon icon={faTachometerAlt} className="icon"/>
                             <span className="text">Dashboard</span>
                         </Link>
@@ -44,7 +44,7 @@ function Sidebar() {
                             <FontAwesomeIcon icon={faProjectDiagram}/>
                         </span>
                     ) : (
-                        <Link to="/not-implemented-yet" className="menu-link">
+                        <Link to="/not-implemented-yet" className="menu-link" onClick={handleCollapseToggle}>
                             <FontAwesomeIcon icon={faProjectDiagram} className="icon"/>
                             <span className="text">Projects</span>
                         </Link>
@@ -56,7 +56,7 @@ function Sidebar() {
                             <FontAwesomeIcon icon={faTasks}/>
                         </span>
                     ) : (
-                        <Link to="/not-implemented-yet" className="menu-link">
+                        <Link to="/not-implemented-yet" className="menu-link" onClick={handleCollapseToggle}>
                             <FontAwesomeIcon icon={faTasks} className="icon"/>
                             <span className="text">Tasks</span>
                         </Link>
@@ -68,7 +68,7 @@ function Sidebar() {
                             <FontAwesomeIcon icon={faUsers}/>
                         </span>
                     ) : (
-                        <Link to="/not-implemented-yet" className="menu-link">
+                        <Link to="/not-implemented-yet" className="menu-link" onClick={handleCollapseToggle}>
                             <FontAwesomeIcon icon={faUsers} className="icon"/>
                             <span className="text">Employers</span>
                         </Link>
@@ -80,7 +80,7 @@ function Sidebar() {
                             <FontAwesomeIcon icon={faFileAlt}/>
                         </span>
                     ) : (
-                        <Link to="/not-implemented-yet" className="menu-link">
+                        <Link to="/not-implemented-yet" className="menu-link" onClick={handleCollapseToggle}>
                             <FontAwesomeIcon icon={faFileAlt} className="icon"/>
                             <span className="text">Reports</span>
                         </Link>
@@ -92,7 +92,7 @@ function Sidebar() {
                             <FontAwesomeIcon icon={faCogs}/>
                         </span>
                     ) : (
-                        <Link to="/not-implemented-yet" className="menu-link">
+                        <Link to="/not-implemented-yet" className="menu-link" onClick={handleCollapseToggle}>
                             <FontAwesomeIcon icon={faCogs} className="icon"/>
                             <span className="text">Camunda Integration</span>
                         </Link>

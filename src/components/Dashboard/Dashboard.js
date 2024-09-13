@@ -1,40 +1,53 @@
 import React, {useState} from 'react';
 import './Dashboard.css'; // Import the CSS file for styling
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import {DragDropContext, Droppable, Draggable} from "react-beautiful-dnd";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faPlus, faPen} from '@fortawesome/free-solid-svg-icons';
+import Label from '../Label/Label'
 
 const Dashboard = () => {
     const initColumns = [
         {
             id: 'column-1',
-            name: 'Backlog',
+            name: 'To Do',
             tasks: [
-                { id: 'task-1', name: 'Design UI Mockups' },
-                { id: 'task-2', name: 'Setup Database Schema' }
-            ]
+                {id: 'task-1', name: 'Design Homepage', labels: ['UI', 'Frontend']},
+                {id: 'task-2', name: 'Fix Navbar Bug', labels: ['Bug', 'Frontend']},
+            ],
         },
         {
             id: 'column-2',
             name: 'In Progress',
-            tasks: [
-                { id: 'task-3', name: 'Implement Authentication' }
-            ]
-        }
+            tasks: [{id: 'task-3', name: 'Create API Endpoints', labels: ['Backend']}],
+        },
+    ];
+
+    const initLabelColors = [
+        {label: 'UI', color: 'green'},
+        {label: 'Backend', color: 'blue'},
+        {label: 'Frontend', color: 'purple'},
+        {label: 'Bug', color: 'red'},
     ];
 
 
     const [columns, setColumns] = useState(initColumns);
+    const [labelColors, setLabelColors] = useState(initLabelColors);
     const [taskOverlayVisible, setTaskOverlayVisible] = useState(false);
     const [columnOverlayVisible, setColumnOverlayVisible] = useState(false);
     const [newTaskName, setNewTaskName] = useState('');
+    const [newTaskLabel, setNewTaskLabel] = useState([]);
     const [newColumnName, setNewColumnName] = useState('');
     const [editingItem, setEditingItem] = useState(null);
     const [editingType, setEditingType] = useState('');
     const [addingTaskToColumn, setAddingTaskToColumn] = useState(null);
 
     const navigate = useNavigate();
+
+    const getColorByLabel = (label) => {
+        const item = labelColors.find((item) => item.label === label);
+        return item ? item.color : null; // Return color or null if label not found
+    };
 
     const addColumn = () => {
         if (newColumnName) {
@@ -48,9 +61,14 @@ const Dashboard = () => {
         if (addingTaskToColumn != null && newTaskName) {
             if (addingTaskToColumn >= 0 && addingTaskToColumn < columns.length) {
                 const updatedColumns = [...columns];
-                updatedColumns[addingTaskToColumn].tasks.push({id: Date.now().toString(), content: newTaskName});
+                updatedColumns[addingTaskToColumn].tasks.push({
+                    id: Date.now().toString(),
+                    name: newTaskName,
+                    labels: newTaskLabel
+                });
                 setColumns(updatedColumns);
                 setNewTaskName('');
+                setNewTaskLabel([]);
                 setAddingTaskToColumn(null);
                 setTaskOverlayVisible(false);
             } else {
@@ -146,6 +164,12 @@ const Dashboard = () => {
                                                                 onClick={() => handleTaskClick(taskIndex)}
                                                             >
                                                                 {task.name}
+                                                                <div className="labels">
+                                                                    {task.labels.map((label, index) => (
+                                                                        <Label text={label}
+                                                                               color={getColorByLabel(label)}/>
+                                                                    ))}
+                                                                </div>
                                                             </div>
                                                         )}
                                                     </Draggable>
@@ -203,8 +227,27 @@ const Dashboard = () => {
                             onChange={(e) => setNewTaskName(e.target.value)}
                             placeholder="Task Name"
                         />
+                        <select
+                            value={newTaskLabel}
+                            multiple
+                            onChange={(e) => {
+                                const options = e.target.options;
+                                const selected = Array.from(options)
+                                    .filter(option => option.selected)
+                                    .map(option => option.value);
+                                console.log(selected)
+                                setNewTaskLabel(selected);
+                            }}
+                        >
+                            <option value={[]} disabled selected>Label</option>
+                            {labelColors.map(({label}) => (
+                                <option value={label}>
+                                    {label}
+                                </option>
+                            ))}
+                        </select>
                         <div>
-                            <button onClick={addTask}>Add Task</button>
+                        <button onClick={addTask}>Add Task</button>
                             <button onClick={() => setTaskOverlayVisible(false)}>Close</button>
                         </div>
                     </div>
