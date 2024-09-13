@@ -9,7 +9,8 @@ import {
     faTasks,
     faUsers,
     faFileAlt,
-    faCogs
+    faCogs,
+    faList
 } from '@fortawesome/free-solid-svg-icons';
 import logo from '../../assets/logo.png'; // Adjust the path to your logo image
 
@@ -41,12 +42,12 @@ function Sidebar() {
                 <div className={`menu-item ${collapsed ? 'collapsed' : ''}`}>
                     {collapsed ? (
                         <span className="icon">
-                            <FontAwesomeIcon icon={faProjectDiagram}/>
+                            <FontAwesomeIcon icon={faList}/>
                         </span>
                     ) : (
-                        <Link to="/not-implemented-yet" className="menu-link" onClick={handleCollapseToggle}>
-                            <FontAwesomeIcon icon={faProjectDiagram} className="icon"/>
-                            <span className="text">Projects</span>
+                        <Link to="/issues" className="menu-link" onClick={handleCollapseToggle}>
+                            <FontAwesomeIcon icon={faList} className="icon"/>
+                            <span className="text">Issues</span>
                         </Link>
                     )}
                 </div>
