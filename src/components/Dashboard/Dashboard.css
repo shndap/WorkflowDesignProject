@@ -1,72 +1,42 @@
-.dashboard {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    padding: 20px;
-    /*background-color: #ecf0f1; !* Light background color for the dashboard *!*/
-}
-
-.dashboard-header {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 20px;
-}
-
-.add-button {
-    background-color: #34495e; /* Dark blue for the button */
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1.5em;
-}
-
-.column {
-    background-color: white; /* Dark blue background for columns */
-    color: black;
-    border-radius: 5px;
-    padding: 20px;
-    width: 300px; /* Max width for columns */
-    min-width: 300px; /* Max width for columns */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for columns */
-    transition: all 0.5s;
-}
-
-.column:hover {
-    background-color: #c4d0d8;
-    /*backdrop-filter: blur(6px);*/
-}
-
-.dashboard-body {
+.kb-body {
     display: flex;
     flex-direction: row;
     gap: 20px;
     overflow-x: scroll;
     padding: 20px;
     width: auto;
+    height: 500px;
 }
 
-.dashboard-body::-webkit-scrollbar {
+.react-kanban-board {
+    height: 100%;
+    padding: 10px
+}
+
+.react-kanban-board::-webkit-scrollbar {
     width: 6px; /* Width of the scrollbar */
     height: 6px;
 }
 
-.dashboard-body::-webkit-scrollbar-track {
+.react-kanban-board::-webkit-scrollbar-track {
     background: #f1f1f1; /* Background color of the scrollbar track */
     margin: 20px;
 }
 
-.dashboard-body::-webkit-scrollbar-thumb {
+.react-kanban-board::-webkit-scrollbar-thumb {
     background: #b2cde3; /* Color of the scrollbar thumb */
     border-radius: 6px; /* Rounded corners of the scrollbar thumb */
 }
 
-.dashboard-body::-webkit-scrollbar-thumb:hover {
+.react-kanban-board::-webkit-scrollbar-thumb:hover {
     background: #5c6483; /* Darker color when hovered */
 }
 
-.header-dashboard{
+.react-kanban-board {
+    height: 500px;
+}
+
+.header-dashboard {
     display: flex;
     font-size: 2.5em;
     padding: 20px;
@@ -75,125 +45,42 @@
     font-weight: bold;
 }
 
-.column-add {
-    border: none;
-    background-color: rgba(196, 208, 216, 0.49); /* Dark blue background for columns */
+.react-kanban-column > div {
+    max-height: 100%;
+}
+
+.react-kanban-column {
     color: black;
     border-radius: 5px;
-    padding: 2px;
-    align-items: center;
-    width: 30px; /* Max width for columns */
-    min-width: 30px; /* Max width for columns */
-    /*height: 400px;*/
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for columns */
-}
-
-.column-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.column-title {
-    font-size: 1.2em;
-    transition: all 0.5s ease;
-}
-
-.edit-button {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1.2em;
-    cursor: pointer;
-}
-
-.tasks {
-    margin-top: 10px;
-}
-
-.task {
-    background-color: rgba(52, 73, 94, 0.28); /* Slightly darker blue for tasks */
-    padding: 10px;
-    margin-bottom: 5px;
-    border-radius: 3px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.add-task-button {
-    background-color: rgba(52, 73, 94, 0.10); /* Dark blue for add task button */
-    color: rgba(0, 0, 0, 0.50);
-    border: none;
-    padding: 10px;
-    width: 100%;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-.add-task-button:hover {
-    background-color: rgba(52, 73, 94, 0.56); /* Dark blue for add task button */
-    color: white;
-    border: none;
-    padding: 10px;
-    width: 100%;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 2000; /* Ensure overlay is above all content */
-}
-
-.overlay-content {
-    background-color: white;
     padding: 20px;
-    border-radius: 5px;
-    width: 400px; /* Set width for the overlay content */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 300px; /* Max width for columns */
+    min-width: 300px; /* Max width for columns */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for columns */
+    transition: all 0.5s;
+    font-size: 1.4em;
+    height: 400px;
+    min-height: 400px;
 }
 
-.overlay-content h2 {
-    margin-top: 0;
+.react-kanban-column:hover .rck-header {
+    border-bottom: 2px solid #162b36;
 }
 
-.overlay-content input {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 3px;
+.rck-header {
+    font-size: 1em;
+    font-weight: bold;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid lightblue;
+    transition: all 0.5s;
 }
 
-.overlay-content button {
-    background-color: #34495e; /* Dark blue for buttons */
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-right: 10px;
+.react-kanban-column:hover {
+    background-color: #c4d0d8;
+    /*backdrop-filter: blur(6px);*/
 }
 
-.overlay-content button:hover {
-    background-color: #2c3e50; /* Slightly darker blue on hover */
-}
-
-/* From Uiverse.io by cssbuttons-io */
-.fancy {
+.card {
     background-color: transparent;
     border: 2px solid #000;
     border-radius: 5px;
@@ -215,12 +102,12 @@
     transition: all 0.3s ease-in-out;
     user-select: none;
     font-size: 13px;
-    width: 100%;
+    width: 300px;
     margin: 0 0 10px;
 }
 
-.fancy .text {
-    font-size: 1.125em;
+.card .text {
+    font-size: 1.2em;
     line-height: 1.33333em;
     padding-left: 2em;
     display: block;
@@ -231,170 +118,10 @@
     color: black;
 }
 
-.fancy:hover {
+.card:hover {
     color: white;
-    background: rgb(22, 43, 54);
+    background-color: #162b36;
 }
-
-.fancy:hover .text {
-    color: white;
-    padding-left: 1.5em;
-}
-
-/* From Uiverse.io by guilhermeyohan */
-@keyframes slideInFromLeft {
-    0% {
-        transform: translate(-100%, -50%);
-    }
-    100% {
-        transform: translate(-50%, -50%);
-    }
-}
-
-.login-box {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 400px;
-    padding: 40px;
-    transform: translate(-50%, -50%);
-    background: rgb(22, 43, 54);
-    box-sizing: border-box;
-    box-shadow: 0 15px 25px rgba(0,0,0,.6);
-    border-radius: 10px;
-    animation: slideInFromLeft 0.5s;
-}
-
-.user-box h2 {
-    color: white;
-    width: 100%;
-    text-align: center;
-}
-
-.user-box div {
-    width: fit-content;
-    height: auto;
-    justify-content: center;
-    margin: auto;
-}
-
-
-.login-box .user-box {
-    position: relative;
-}
-
-.login-box .user-box input {
-    width: 100%;
-    padding: 10px 0;
-    font-size: 16px;
-    color: #fff;
-    margin-bottom: 30px;
-    border: none;
-    border-bottom: 1px solid #fff;
-    outline: none;
-    background: transparent;
-}
-
-.login-box .user-box select {
-    width: 100%;
-    padding: 10px 0;
-    font-size: 16px;
-    color: #fff;
-    margin-bottom: 30px;
-    border: none;
-    max-height: 150px;
-    /*border-bottom: 1px solid #fff;*/
-    outline: none;
-    background: transparent;
-}
-
-.login-box .user-box option {
-    display: flex;
-    flex-direction: column;
-    border-radius: 5px;
-    padding: 10px;
-    color: white;
-    position: relative;
-    /*top: -100px;*/
-    transition: 300ms;
-}
-
-/* WebKit scrollbar styling */
-.login-box .user-box select::-webkit-scrollbar {
-    width: 10px;
-}
-
-.login-box .user-box select::-webkit-scrollbar-track {
-    background: #2c3e50;
-    border-radius: 5px;
-}
-
-.login-box .user-box select::-webkit-scrollbar-thumb {
-    background: #34495e;
-    border-radius: 5px;
-}
-
-.login-box .user-box select::-webkit-scrollbar-thumb:hover {
-    background: #1abc9c;
-}
-
-.select-label {
-    color: white;
-    font-size: 1.2em;
-    border-radius: 5px;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.48);
-    min-width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    box-sizing: border-box;
-}
-
-/* Hover effect for options */
-.login-box .user-box option:hover {
-    background: #34495e;
-    color: #fff;
-}
-
-.login-box .user-box label {
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 10px 0;
-    font-size: 16px;
-    color: #fff;
-    pointer-events: none;
-    transition: .5s;
-}
-
-.login-box .user-box input:focus ~ label,
-.login-box .user-box input:valid ~ label {
-    top: -20px;
-    left: 0;
-    color: #bdb8b8;
-    font-size: 12px;
-}
-
-.login-box button {
-    position: relative;
-    display: inline-block;
-    padding: 10px 20px;
-    color: white;
-    background-color: transparent;
-    text-decoration: none;
-    text-transform: uppercase;
-    overflow: hidden;
-    transition: .5s;
-    letter-spacing: 4px;
-    border-radius: 5px;
-    margin: 5px
-}
-
-.login-box button:hover {
-    background: #8abff4;
-    color: #fff;
-    border-radius: 5px;
-}
-
 
 .labels {
     transform: scale(0);
@@ -404,15 +131,83 @@
     transition: all 0.3s ease-in-out;
 }
 
-.fancy:hover .labels {
+.card:hover .labels {
     transform: scale(1);
     flex-direction: row;
     overflow-x: scroll;
-    padding: 10px 0px 0px 0px;
+    padding: 10px 0 0 0;
     height: max-content;
     display: flex;
 }
 
-.fancy:hover .labels::-webkit-scrollbar {
+.card:hover .labels::-webkit-scrollbar {
     display: none;
+}
+
+.react-kanban-card-adder-form {
+    border-radius: 10px;
+    border: 2px dashed black;
+    background-color: #fff;
+    padding: 10px;
+    margin-bottom: 7px;
+    min-width: 100%;
+}
+
+.react-kanban-card-adder-form input {
+    font-family: inherit;
+    font-size: inherit
+}
+
+.react-kanban-card-adder-button {
+    width: 100%;
+    margin-top: 5px;
+    background-color: transparent;
+    cursor: pointer;
+    border: 1px dashed #ccc;
+    transition: 0.3s;
+    border-radius: 3px;
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: bold
+}
+
+.react-kanban-card-adder-button:hover {
+    background-color: rgba(255, 255, 255, 0.45)
+}
+
+.react-kanban-card-adder-form__title {
+    font-weight: bold;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.react-kanban-card-adder-form__title:focus {
+    outline: none
+}
+
+.react-kanban-card-adder-form__description {
+    display: none;
+}
+
+.react-kanban-card-adder-form__button {
+    background-color: transparent;
+    border: 1.5px solid black;
+    padding: 5px;
+    width: 45%;
+    margin-top: 5px;
+    border-radius: 100px
+}
+
+.react-kanban-card-adder-form__button:hover {
+    transition: 0.3s;
+    cursor: pointer;
+    background-color: #d5e9f8
+}
+
+.react-kanban-column input:focus {
+    background-color: transparent;
+    border: 1.5px solid black;
 }

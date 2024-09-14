@@ -192,6 +192,10 @@ const TaskMenu = () => {
                             <option value="High">High</option>
                         </select>
                     </div>
+                    <div className='buttons'>
+                        <button type="button" onClick={handleSave} className="save-button">Save</button>
+                        <button type="button" onClick={handleClose} className="close-button">Close</button>
+                    </div>
                 </form>
             </div>
         </div>

@@ -2,12 +2,12 @@ import React, {useState} from 'react';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Sidebar from './components/Sidebar/Sidebar';
 import Header from './components/Header/Header';
-import Dashboard from './components/Dashboard/Dashboard';
 import Home from './components/Home/Home';
 import NotImplementedYet from './components/NotImplementedYet/NotImplementedYet';
 import TaskMenu from "./components/TaskMenu/TaskMenu";
 import './App.css';
 import IssueBlock from "./components/Issues/IssueBlock/IssueBlock";
+import Dashboard from "./components/Dashboard/Dashboard";
 
 function App() {
     const [collapsed, setCollapsed] = useState(false);
