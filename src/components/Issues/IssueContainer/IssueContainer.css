@@ -1,0 +1,69 @@
+.issue-container {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px 30px;
+    max-width: 50%;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.issue-header {
+    /*background-color: white;*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 8px;
+    /*border-bottom: 1px solid #eee;*/
+}
+
+.issue-header span {
+    font-size: 14px;
+    color: #7f8c8d;
+}
+
+.issue-body {
+    margin-top: 12px;
+    font-size: 16px;
+    color: #34495e;
+}
+
+/*Button*/
+/* From Uiverse.io by AqFox */
+.custom-btn {
+    width: 100px;
+    height: 30px;
+    color: #d5e9f8;
+    border-radius: 5px;
+    padding: 7px 25px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    box-shadow: inset 2px 2px 2px 0px rgba(255,255,255,.5),
+    7px 7px 20px 0px rgba(0,0,0,.1),
+    4px 4px 5px 0px rgba(0,0,0,.1);
+    outline: none;
+    font-size: 15px;
+}
+
+.btn-2 {
+    background: #343c5e;
+    background: linear-gradient(0deg, #343c5e 0%, #343c5e 100%);
+    border: none;
+}
+
+.btn-2:before {
+    height: 0%;
+    width: 2px;
+}
+
+.btn-2:hover {
+    box-shadow: 4px 4px 6px 0 rgba(255,255,255,.5);
+    /*-4px -4px 6px 0 rgba(116, 125, 136, .5);*/
+    /*inset -4px -4px 6px 0 rgba(255,255,255,.2);*/
+    /*inset 4px 4px 6px 0 rgba(0, 0, 0, .4);*/
+}

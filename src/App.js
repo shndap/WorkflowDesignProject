@@ -6,8 +6,8 @@ import Home from './components/Home/Home';
 import NotImplementedYet from './components/NotImplementedYet/NotImplementedYet';
 import TaskMenu from "./components/TaskMenu/TaskMenu";
 import './App.css';
-import IssueBlock from "./components/Issues/IssueBlock/IssueBlock";
 import Dashboard from "./components/Dashboard/Dashboard";
+import Issues from "./components/Issues/Issues";
 
 function App() {
     const [collapsed, setCollapsed] = useState(false);
@@ -25,7 +25,7 @@ function App() {
                         <Route path="/" element={<Home/>}/> {/* Default route */}
                         <Route path="/not-implemented-yet" element={<NotImplementedYet/>}/> {/* Default route */}
                         <Route path="/task-details" element={<TaskMenu/>}/>
-                        <Route path="/issues" element={<IssueBlock/>}/>
+                        <Route path="/issues" element={<Issues/>}/>
                         {/*<Route path="/dashboard" element={<AppTest/>}/>*/}
                         {/* Add other routes here */}
                     </Routes>
