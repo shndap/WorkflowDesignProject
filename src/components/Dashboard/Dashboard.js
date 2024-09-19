@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import Board, {moveCard} from "@asseinfo/react-kanban";
 import "@asseinfo/react-kanban/dist/styles.css";
+import Avatar from 'react-avatar';
 import "./Dashboard.css";
 import Label from "../Label/Label";
 import {useNavigate} from "react-router-dom";
@@ -83,12 +84,12 @@ const initLabelColors = [
     {name: "bug", color: "#e74c3c"},          // Red
     {name: "urgent", color: "#e67e22"},       // Orange
     {name: "feature", color: "#2ecc71"},      // Green
-    {name: "lowPriority", color: "#95a5a6"},  // Gray
+    {name: "low-priority", color: "#95a5a6"},  // Gray
     {name: "enhancement", color: "#3498db"},  // Blue
     {name: "in-progress", color: "#f1c40f"},   // Yellow
     {name: "review", color: "#9b59b6"},       // Purple
     {name: "question", color: "#1abc9c"},     // Teal
-    {name: "highPriority", color: "#c0392b"}, // Dark Red
+    {name: "high-priority", color: "#c0392b"}, // Dark Red
     {name: "completed", color: "#2ecc71"}     // Green
 ];
 
@@ -112,10 +113,19 @@ function ControlledBoard() {
         return item ? item.color : null; // Return color or null if label not found
     };
 
+    function getRandomAvatarUrl() {
+        // Generates a random number between 1 and 99 to get a random avatar
+        const randomNum = Math.floor(Math.random() * 100);
+        return `https://randomuser.me/api/portraits/men/${randomNum}.jpg`;
+    }
+
     function CustomCard({card}) {
         return (
             <div className="card" onClick={() => navigate('/task-details')}>
-                {card.title}
+                <div className='hold-avatar-name'>
+                    {card.title}
+                    <Avatar src={getRandomAvatarUrl()} size="30" round={true}/>
+                </div>
                 <div className="labels">
                     {card.labels?.map((label) => (
                         <Label color={getColorByLabel(label)} text={label}/>
@@ -146,8 +156,8 @@ function ControlledBoard() {
     return (
         <Board
             disableColumnDrag
-            allowAddCard={{ on: "top" }}
-            allowAddColumn={{ on: "right" }}
+            allowAddCard={{on: "bottom"}}
+            allowAddColumn={{on: "right"}}
             allowRemoveCard
             allowRenameColumn
             onCardNew={console.log}

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import Sidebar from './components/Sidebar/Sidebar';
+import CustomSidebar from './components/Sidebar/Sidebar';
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import NotImplementedYet from './components/NotImplementedYet/NotImplementedYet';
@@ -17,7 +17,7 @@ function App() {
     return (
         <Router>
             <div className="app-container">
-                <Sidebar collapsed={collapsed} toggleSidebar={toggleSidebar}/>
+                <CustomSidebar collapsed={collapsed} toggleSidebar={toggleSidebar}/>
                 <div className="main-content">
                     <Header collapsed={collapsed}/>
                     <Routes>

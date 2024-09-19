@@ -10,8 +10,9 @@ function Header() {
     useEffect(() => {
         // Assuming you have a way to detect sidebar collapse from the sidebar component
         const handleResize = () => {
-            const sidebar = document.querySelector('.sidebar');
-            setSidebarCollapsed(sidebar.classList.contains('collapsed'));
+            const sidebar = document.querySelector('.customSidebar');
+            // console.log(sidebar);
+            // setSidebarCollapsed(sidebar.classList.contains('collapsed'));
         };
 
         window.addEventListener('resize', handleResize);

@@ -172,7 +172,8 @@
 }
 
 .react-kanban-card-adder-button:hover {
-    background-color: rgba(255, 255, 255, 0.45)
+    background-color: transparent;
+    border-color: #2c3e50;
 }
 
 .react-kanban-card-adder-form__title {
@@ -210,4 +211,11 @@
 .react-kanban-column input:focus {
     background-color: transparent;
     border: 1.5px solid black;
+}
+
+.hold-avatar-name {
+    display: flex;
+    justify-content: space-between; /* This makes the text stick to the left and the avatar to the right */
+    align-items: center; /* Align the text and avatar vertically in the middle */
+    width: 100%; /* Ensures the div takes the full width */
 }
